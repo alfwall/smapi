@@ -12,6 +12,9 @@
 - [ ] Create base models
 - [ ] 
 
+## Installation
+1. `npm i`
+
 ## User Story
 
 AS A social media startup,
