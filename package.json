@@ -1,0 +1,13 @@
+{
+  "name": "cbc-mod18c-smapi",
+  "version": "1.0.0",
+  "description": "![Video demo here!](https://google.com)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
