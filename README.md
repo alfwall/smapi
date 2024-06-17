@@ -6,11 +6,11 @@
 
 
 ## TODO
-- [ ] Create base README
-- [ ] Create server.js
-- [ ] Create connection.js
-- [ ] Create base models
-- [ ] 
+- [x] Create base README
+- [x] Create server.js
+- [x] Create connection.js
+- [x] Create base models
+- [x] Create some routes 
 
 ## Installation
 1. `npm i`
