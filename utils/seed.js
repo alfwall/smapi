@@ -1,6 +1,6 @@
 const connection = require("../config/connection");
 const { User, Thought } = require("../models");
-const { getUsers, associateThoughtsWithUsers } = require("./data");
+const { getUsers, associateThoughtsWithUsers, getReactions } = require("./data");
 
 
 connection.on("error", (error) => error);
@@ -21,10 +21,20 @@ connection.once("open", async () => {
     // Insert users data 
     const users = getUsers();
     const usersData = await User.insertMany(users);
+
     // Insert thoughts
     const thoughts = associateThoughtsWithUsers();
-    //console.log(thoughts)
     const thoughtsData = await Thought.insertMany(thoughts);
-    console.log(thoughtsData)
+
+    // Create reactions
+    const reactions = getReactions();
+    for (let i=0; i<reactions.length; i++) {
+        let randomThought = thoughtsData[Math.floor(Math.random() * thoughtsData.length)]
+        let randomThoughtID = randomThought["_id"];
+        await Thought.updateOne({_id: randomThoughtID}, {$push: {reactions: reactions[i]}});
+    }
+
+    // Done! Cleanup.
+    console.log("Done seeding!");
     process.exit(0);
 });

@@ -89,7 +89,19 @@ const associateThoughtsWithUsers = () => {
     }
 
     return thoughtsResults;
-
 };
 
-module.exports = { getUsers, associateThoughtsWithUsers };
+const getReactions = () => {
+    const reactionsResults = [];
+
+    for (let i=0; i<reactions.length; i++) {
+        reactionsResults.push({
+            reactionBody: reactions[i],
+            username: getRandomArrItem(usernames)
+        });
+    }
+
+    return reactionsResults;
+};
+
+module.exports = { getUsers, associateThoughtsWithUsers, getReactions };
