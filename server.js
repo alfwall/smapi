@@ -1,9 +1,20 @@
-const express = require('express');
-const db = require('./config/connection');
+const express = require("express");
+const db = require("./config/connection");
+console.log(`importing routes...`)
+const routes = require("./routes");
 
 // models
 const { User, Thought } = require("./models");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+console.log(`using routes...`)
+app.use(routes);
+
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+  });
+});
