@@ -13,7 +13,7 @@ const userSchema = new Schema({
         unique: true,
         validate: {
             validator: function (value) {
-                console.log("Validating ${value} for email...")
+                //console.log("Validating ${value} for email...")
                 return /^\S+@\S+\.\S+$/.test(value);
             },
             message: m => `${m.value} is not a valid email!`
@@ -23,7 +23,7 @@ const userSchema = new Schema({
     friends: [{ type: Types.ObjectId, ref: "User" }]
 },
 {
-    collection: "snapiUsers"
+    collection: "users"
 });
 
 userSchema.virtual("friendCount")
@@ -31,6 +31,6 @@ userSchema.virtual("friendCount")
         return this.friends.length;
     });
 
-const User = model("User", userSchema);
+const User = model("user", userSchema);
 
 module.exports = User;

@@ -4,7 +4,8 @@
   "description": "![Video demo here!](https://google.com)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server",
+    "seed": "node utils/seed"
   },
   "author": "",
   "license": "ISC",
