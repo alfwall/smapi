@@ -23,19 +23,38 @@ connection.once("open", async () => {
     const usersData = await User.insertMany(users);
     console.log(`Seeded ${usersData.length} users!`)
 
+    // TODO: Give them each random amounts of random friends
+    for (let i = 0; i < usersData.length; i++) {
+        // oh god wait how would I do this effectively, actually
+    }
+
     // Insert thoughts
     const thoughts = associateThoughtsWithUsers();
     const thoughtsData = await Thought.insertMany(thoughts);
+    for (let i = 0; i < thoughtsData.length; i++) {
+        let thoughtUsername = thoughtsData[i]["username"];
+        console.log(`Updating username ${thoughtUsername} with thoughtID ${thoughtsData[i]["_id"]}`)
+        await User.updateOne(
+            { username: thoughtUsername },
+            { $push: { thoughts: thoughtsData[i]["_id"] } }
+        );
+    }
     console.log(`Seeded ${thoughtsData.length} thoughts!`)
 
     // Create reactions
     const reactions = getReactions();
-    for (let i=0; i<reactions.length; i++) {
+    for (let i = 0; i < reactions.length; i++) {
         let randomThought = thoughtsData[Math.floor(Math.random() * thoughtsData.length)]
         let randomThoughtID = randomThought["_id"];
-        await Thought.updateOne({_id: randomThoughtID}, {$push: {reactions: reactions[i]}});
+        await Thought.updateOne(
+            { _id: randomThoughtID },
+            { $push: { reactions: reactions[i] } }
+        );
     }
     console.log(`Seeded ${reactions.length} reactions!`)
+
+    // Finally, go back into User data and add to their thoughts arrays
+
 
     // Done! Cleanup.
     console.log("Done seeding!");
