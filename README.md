@@ -17,7 +17,7 @@
 - [ ] Get INDIVIDUAL Thought
 - [x] Create new User
 - [x] Update existing User
-- [ ] Delete existing User
+- [x] Delete existing User
 - [ ] EXTRA CREDIT: Delete all Thoughts related to Deleted User
 - [ ] Create new Thought
 - [ ] Update existing Thought

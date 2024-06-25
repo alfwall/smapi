@@ -51,7 +51,13 @@ module.exports = {
     },
     async deleteUser(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const user = await User.findOneAndDelete({_id: req.params.userID});
+            if (!user) {
+                return res.status(404).json({message: "No user found to delete"});
+            }
+            // TODO: DELETE ALL THOUGHTS RELATED TO USER
+
+            res.json({message: "User successfully deleted."});
         }
         catch (error) {
             console.log(error);
