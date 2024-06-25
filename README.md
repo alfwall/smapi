@@ -24,6 +24,8 @@
 - [x] Create new Thought
 - [x] Update existing Thought
 - [x] Delete existing Thought
+- [ ] Add Reaction
+- [ ] Remove Reaction
 
 
 
