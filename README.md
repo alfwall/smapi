@@ -1,9 +1,9 @@
 # SNAPI
 
-![Video demo here UHOHHHHHHCHANGEME!](https://google.com)
+![Video demo here!](https://drive.google.com/file/d/1nqkFZBcp99enAc6m3H2X4wYksQ79uZyz/view?usp=sharing)
 
 ## Description
-
+An API for interacting with a social media app that can modify users, posts, and replies to posts. 
 
 ## TODO
 - [x] Create base README
@@ -18,7 +18,7 @@
 - [x] Create new User
 - [x] Update existing User
 - [x] Delete existing User
-- [ ] EXTRA CREDIT: Delete all Thoughts related to Deleted User
+- [x] EXTRA CREDIT: Delete all Thoughts related to Deleted User
 - [x] Add Friend
 - [x] Remove Friend
 - [x] Create new Thought
@@ -30,9 +30,10 @@
 
 
 ## Installation
-1. `npm i`
-2. `npm run seed`
-3. `npm start`
+1. Spin up MongoDB Compass
+2. `npm i`
+3. `npm run seed`
+4. `npm start`
 
 ## User Story
 
