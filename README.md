@@ -1,6 +1,6 @@
 # SNAPI
 
-![Video demo here!](https://drive.google.com/file/d/1nqkFZBcp99enAc6m3H2X4wYksQ79uZyz/view?usp=sharing)
+[Video demo here!](https://drive.google.com/file/d/1nqkFZBcp99enAc6m3H2X4wYksQ79uZyz/view?usp=sharing)
 
 ## Description
 An API for interacting with a social media app that can modify users, posts, and replies to posts. 
