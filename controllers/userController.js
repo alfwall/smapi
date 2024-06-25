@@ -1,5 +1,4 @@
-const { ObjectId } = require("mongoose").Types;
-const { User, Thought } = require("../models");
+const { User } = require("../models");
 
 module.exports = {
     async getUsers(req, res) {
@@ -26,6 +25,42 @@ module.exports = {
         try {
             const newUser = await User.create(req.body);
             res.json({ newUser });
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
+    },
+    async updateUser(req, res) {
+        try {
+            throw Error("TODO: NOT IMPLEMENTED")
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
+    },
+    async deleteUser(req, res) {
+        try {
+            throw Error("TODO: NOT IMPLEMENTED")
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
+    },
+    async addFriend(req, res) {
+        try {
+            throw Error("TODO: NOT IMPLEMENTED")
+        }
+        catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
+    },
+    async removeFriend(req, res) {
+        try {
+            throw Error("TODO: NOT IMPLEMENTED")
         }
         catch (error) {
             console.log(error);
