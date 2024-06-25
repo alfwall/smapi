@@ -6,4 +6,5 @@ const {
 
 router.route("/").get(getThoughts) //.post(createThought);
 
+
 module.exports = router;
