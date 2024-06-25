@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongoose").Types;
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 module.exports = {
     // GET "/"
@@ -61,13 +61,17 @@ module.exports = {
     // DELETE "/:userID"
     async deleteUser(req, res) {
         try {
-            const user = await User.findOneAndDelete({ _id: req.params.userID });
+            const user = await User.findOne({ _id: req.params.userID });
             if (!user) {
                 return res.status(500).json({ message: "No user found to delete" });
             }
-            // TODO: DELETE ALL THOUGHTS RELATED TO USER
+            const thoughts = await Thought.deleteMany({
+                _id: {$in: user.thoughts}
+            })
 
-            res.status(200).json({ message: "User successfully deleted." });
+            const userDeleted = await User.findOneAndDelete({_id: req.params.userID});
+
+            res.status(200).json({message: "Successfully deleted user."})
         }
         catch (error) {
             console.log(error);
