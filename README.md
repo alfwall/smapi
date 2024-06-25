@@ -14,16 +14,16 @@
 - [x] Get ALL Users
 - [x] Get ALL Thoughts
 - [x] Get INDIVIDIAUL User
-- [ ] Get INDIVIDUAL Thought
+- [x] Get INDIVIDUAL Thought
 - [x] Create new User
 - [x] Update existing User
 - [x] Delete existing User
 - [ ] EXTRA CREDIT: Delete all Thoughts related to Deleted User
-- [ ] Create new Thought
-- [ ] Update existing Thought
-- [ ] Delete existing Thought
 - [ ] Add Friend
 - [ ] Remove Friend
+- [x] Create new Thought
+- [ ] Update existing Thought
+- [ ] Delete existing Thought
 
 
 
