@@ -22,13 +22,15 @@
 - [ ] Add Friend
 - [ ] Remove Friend
 - [x] Create new Thought
-- [ ] Update existing Thought
-- [ ] Delete existing Thought
+- [x] Update existing Thought
+- [x] Delete existing Thought
 
 
 
 ## Installation
 1. `npm i`
+2. `npm run seed`
+3. `npm start`
 
 ## User Story
 
