@@ -92,7 +92,9 @@ module.exports = {
                 { $addToSet: { friends: req.params.userID } },
                 { new: true }
             );
-
+            if (!updatedUser || !updatedFriend) {
+                return res.status(500).json({message: "Failed to update friends list..."})
+            }
             res.status(200).json({ message: `${updatedUser.username} and ${updatedFriend.username} are now friends~` })
         }
         catch (error) {
@@ -103,7 +105,20 @@ module.exports = {
     // DELETE "/:userID/friends/:friendID"
     async removeFriend(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userID },
+                { $pull: { friends: req.params.friendID } },
+                { new: true }
+            );
+            const friend = await User.findOneAndUpdate(
+                { _id: req.params.friendID },
+                { $pull: { friends: req.params.userID } },
+                { new: true }
+            );
+            if (!user || !friend) {
+                return res.status(500).json({message: "One or both ID's provided weren't found."})
+            }
+            res.json({message: `${user.username} and ${friend.username} are no longer friends.`})
         }
         catch (error) {
             console.log(error);
