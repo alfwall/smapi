@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongoose").Types;
 const { Thought } = require("../models");
 
 module.exports = {
@@ -69,20 +70,38 @@ module.exports = {
             return res.status(500).json(error);
         }
     },
-    // POST "/:thoughtID/reaction" WITH BODY
+    // POST "/:thoughtID/reactions" WITH BODY
     async addReaction(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const newReaction = {
+                reactionBody: req.body.reactionBody,
+                username: req.body.username
+            };
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtID },
+                { $addToSet: { reactions: newReaction } },
+                { new: true }
+            );
+            if (!thought) {
+                return res.status(500).json({ message: "Couldn't find thought to add reaction to." })
+            }
+            res.status(200).json(thought);
         }
         catch (error) {
             console.log(error);
             return res.status(500).json(error);
         }
     },
-    // DELETE "/:thoughtID/reaction/:reactionID"
+    // DELETE "/:thoughtID/reactions/:reactionID"
     async removeReaction(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const thought = await Thought.findOne({_id: req.params.thoughtID});
+            thought.reactions.pull({reactionID: req.params.reactionID})
+            thought.save();
+            if (!thought) {
+                return res.status(500).json({ message: "Couldn't find thought to remove reaction to." })
+            }
+            res.status(200).json(thought);
         }
         catch (error) {
             console.log(error);
