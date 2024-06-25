@@ -11,6 +11,21 @@
 - [x] Create connection.js
 - [x] Create base models
 - [x] Create some routes 
+- [x] Get ALL Users
+- [x] Get ALL Thoughts
+- [ ] Get INDIVIDIAUL User
+- [ ] Get INDIVIDUAL Thought
+- [ ] Create new User
+- [ ] Update existing User
+- [ ] Delete existing User
+- [ ] EXTRA CREDIT: Delete all Thoughts related to Deleted User
+- [ ] Create new Thought
+- [ ] Update existing Thought
+- [ ] Delete existing Thought
+- [ ] Add Friend
+- [ ] Remove Friend
+
+
 
 ## Installation
 1. `npm i`
