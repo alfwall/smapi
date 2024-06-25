@@ -32,8 +32,17 @@ module.exports = {
         }
     },
     async updateUser(req, res) {
+        console.log("Updating user!")
+        console.log(req.body)
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userID },
+                { username: req.body.username },
+                { new: true });
+            if (!user) {
+                return res.status(404).json({ message: "Could not find user!" })
+            }
+            res.status(200).json({ user });
         }
         catch (error) {
             console.log(error);

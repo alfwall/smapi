@@ -12,10 +12,10 @@ const {
 // /api/users 
 router.route("/")
     .get(getUsers)
-    .post(createNewUser)
-    .put(updateUser);
+    .post(createNewUser);
 router.route("/:userID")
     .get(getSpecificUser)
+    .put(updateUser)
     .delete(deleteUser);
 router.route("/:userID/friends/:friendID")
     .post(addFriend)
