@@ -1,6 +1,4 @@
-console.log(`create router...`)
 const router = require("express").Router();
-console.log(`sourcing the api routes...`)
 const apiRoutes = require("./api");
 
 router.use("/api", apiRoutes);

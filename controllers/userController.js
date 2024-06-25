@@ -32,15 +32,13 @@ module.exports = {
         }
     },
     async updateUser(req, res) {
-        console.log("Updating user!")
-        console.log(req.body)
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userID },
                 { username: req.body.username },
                 { new: true });
             if (!user) {
-                return res.status(404).json({ message: "Could not find user!" })
+                return res.status(404).json({ message: "Could not find user with provided ID." })
             }
             res.status(200).json({ user });
         }

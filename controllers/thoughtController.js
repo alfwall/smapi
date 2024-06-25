@@ -4,9 +4,9 @@ module.exports = {
     async getThoughts(req, res) {
         try {
             const thoughts = await Thought.find();
-            res.json({thoughts});
+            res.json({ thoughts });
         }
-        catch(error) {
+        catch (error) {
             console.log(error);
             return res.status(500).json(error);
         }
@@ -33,7 +33,16 @@ module.exports = {
     },
     async updateThought(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            console.log("updateThought called!")
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtID },
+                { thoughtText: req.body.thoughtText },
+                { new: true }
+            );
+            if (!thought) {
+                return res.status(404).json({ message: "Could not find thought with provided ID." })
+            }
+            res.status(500).json({ thought });
         }
         catch (error) {
             console.log(error);
