@@ -19,7 +19,7 @@
 - [x] Update existing User
 - [x] Delete existing User
 - [ ] EXTRA CREDIT: Delete all Thoughts related to Deleted User
-- [ ] Add Friend
+- [x] Add Friend
 - [ ] Remove Friend
 - [x] Create new Thought
 - [x] Update existing Thought

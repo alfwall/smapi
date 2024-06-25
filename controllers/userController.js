@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongoose').Types;
 const { User } = require("../models");
 
 module.exports = {
@@ -76,7 +77,23 @@ module.exports = {
     // POST "/:userID/friends/:friendID"
     async addFriend(req, res) {
         try {
-            throw Error("TODO: NOT IMPLEMENTED")
+            const user = await User.findOne({ _id: req.params.userID });
+            const friend = await User.findOne({ _id: req.params.friendID });
+            if (!user || !friend) {
+                return res.status(500).json({ message: "One or both user ID's was not found." })
+            }
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: req.params.userID },
+                { $addToSet: { friends: req.params.friendID } },
+                { new: true }
+            );
+            const updatedFriend = await User.findOneAndUpdate(
+                { _id: req.params.friendID },
+                { $addToSet: { friends: req.params.userID } },
+                { new: true }
+            );
+
+            res.status(200).json({ message: `${updatedUser.username} and ${updatedFriend.username} are now friends~` })
         }
         catch (error) {
             console.log(error);
